@@ -9,7 +9,8 @@
     "compose:start": "docker compose up -d --build",
     "compose:stop": "docker compose down --rmi local",
     "compose:restart": "yarn compose:stop && yarn compose:start",
-    "prisma:generate": "yarn prisma generate --schema=./apps/api/prisma/schema.prisma"
+    "prisma:generate": "yarn prisma generate --schema=./apps/api/prisma/schema.prisma",
+    "prisma:push": "yarn prisma db push --schema=./apps/api/prisma/schema.prisma"
   },
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
@@ -72,9 +73,11 @@
     "axios": "^1.0.0",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
+    "pinia": "^2.1.6",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "4"
   }
 }

@@ -1,24 +1,40 @@
 <template>
-  <div>count is {{ count }}</div>
-  <button @click="increment">Increment</button>
+  <header>
+    <div class="wrapper">
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/sign-in">SignIn</RouterLink>
+        <RouterLink to="/post">Post</RouterLink>
+        <button v-if="authStore.me" @click="authStore.signOut()">logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useQuery } from '@vue/apollo-composable';
-import gql from 'graphql-tag';
+import { useAuthStore } from './stores/auth';
 
-const count = ref(0);
-
-const { result } = useQuery(gql`
-  query {
-    hello
-  }
-`);
-
-console.log(result);
-
-function increment() {
-  count.value++;
-}
+const authStore = useAuthStore();
 </script>
+
+<style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+  background: hotpink;
+}
+
+header .wrapper nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header .wrapper a {
+  color: black;
+  background: lightgreen;
+}
+</style>

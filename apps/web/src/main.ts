@@ -1,27 +1,9 @@
-import {
-  ApolloClient,
-  createHttpLink,
-  InMemoryCache,
-} from '@apollo/client/core';
-
 import { createApp, h, provide } from 'vue';
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import App from './App.vue';
-
-// HTTP connection to the API
-const httpLink = createHttpLink({
-  // You should use an absolute URL here
-  uri: process.env.VUE_APP_GRAPHQL_ENDPOINT,
-});
-
-// Cache implementation
-const cache = new InMemoryCache();
-
-// Create the apollo client
-const apolloClient = new ApolloClient({
-  link: httpLink,
-  cache,
-});
+import { router } from './router';
+import { createPinia } from 'pinia';
+import { apolloClient } from './apollo-client';
 
 const app = createApp({
   setup() {
@@ -30,5 +12,8 @@ const app = createApp({
 
   render: () => h(App),
 });
+
+app.use(createPinia());
+app.use(router);
 
 app.mount('#app');

@@ -14,6 +14,8 @@ export class AuthService {
     const user = await this.userService.findOne(username);
 
     if (user?.password !== pass) {
+      console.log(username, pass);
+      console.log(user);
       throw new UnauthorizedException();
     }
 

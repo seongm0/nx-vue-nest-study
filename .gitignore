@@ -49,3 +49,6 @@ Thumbs.db
 
 # GraphQL
 schema.gql
+
+# Environment variables
+.env*

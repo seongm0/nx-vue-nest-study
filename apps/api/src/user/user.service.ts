@@ -14,9 +14,9 @@ export class UserService {
     },
     {
       id: 2,
-      role: RoleEnum.MANAGER,
-      name: 'manager',
-      password: 'manager',
+      role: RoleEnum.WRITER,
+      name: 'writer',
+      password: 'writer',
     },
     {
       id: 3,
@@ -27,6 +27,20 @@ export class UserService {
   ];
 
   async findOne(name: string): Promise<UserModel | undefined> {
-    return this.users.find((user) => user.name === name);
+    const user = this.users.find((user) => user.name === name);
+    return { ...user };
+  }
+
+  async register(name: string, password: string): Promise<UserModel> {
+    const user = {
+      id: this.users.length + 1,
+      role: RoleEnum.GUEST,
+      name,
+      password,
+    };
+
+    this.users.push(user);
+
+    return user;
   }
 }

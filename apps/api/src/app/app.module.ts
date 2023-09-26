@@ -9,7 +9,9 @@ import { PrismaModule } from '@nx-vue-nest/prisma';
 import { AppController } from './app.controller';
 import { AppResolver } from './app.resolver';
 import { AppService } from './app.service';
-import { ArticleModule } from '../article/article.module';
+import { AuthModule } from '../auth/auth.module';
+import { CaslModule } from '../casl/casl.module';
+import { PostModule } from '../post/post.module';
 import { UserModule } from '../user/user.module';
 
 @Module({
@@ -27,8 +29,10 @@ import { UserModule } from '../user/user.module';
       signOptions: { expiresIn: '1d', algorithm: 'HS256' },
     }),
     PrismaModule.forRoot(),
-    ArticleModule,
+    CaslModule,
+    PostModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

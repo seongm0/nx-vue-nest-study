@@ -8,7 +8,7 @@ export class AuthResolver {
   constructor(private authService: AuthService) {}
 
   @Mutation(() => String)
-  signIn(@Args() input: SignInInput) {
+  signIn(@Args('input') input: SignInInput) {
     return this.authService.signIn(input.name, input.password);
   }
 }

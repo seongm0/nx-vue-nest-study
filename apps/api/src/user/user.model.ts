@@ -5,13 +5,13 @@ import { RoleEnum } from '../enums/role.enum';
 @ObjectType()
 export class UserModel {
   @Field(() => Int)
-  id: number;
+  id!: number;
   @Field(() => String)
-  name: string;
+  name!: string;
   @Field(() => String)
-  password: string;
+  password!: string;
   @Field(() => RoleEnum)
-  role: RoleEnum;
+  role!: RoleEnum;
 
   constructor(data: UserModel) {
     Object.assign(this, data);

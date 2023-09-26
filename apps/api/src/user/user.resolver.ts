@@ -1,5 +1,5 @@
 import { UseGuards } from '@nestjs/common';
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 
 import { UserModel } from './user.model';
 import { UserService } from './user.service';
@@ -13,6 +13,15 @@ export class UserResolver {
   @Query(() => UserModel)
   @UseGuards(AuthGuard)
   async me(@CurrentUser() user: Omit<UserModel, 'password'>) {
+    console.log(user);
     return this.userService.findOne(user.name);
+  }
+
+  @Mutation(() => UserModel)
+  async register(
+    @Args('name') name: string,
+    @Args('password') password: string,
+  ) {
+    return this.userService.register(name, password);
   }
 }
