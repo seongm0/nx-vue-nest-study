@@ -7,7 +7,6 @@ const GET_POSTS = gql`
     posts {
       id
       authorId
-      content
       isRocked
       title
     }

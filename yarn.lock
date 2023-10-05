@@ -1773,6 +1773,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@casl/vue@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@casl/vue@npm:2.2.1"
+  peerDependencies:
+    "@casl/ability": ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.1.0 || ^6.0.0
+    vue: ^3.0.0
+  checksum: a00e62f34c7112260c44ff23868b3f766035c7878106d139a70aaee5643546207dd4736fe08e0844e5f1c58e64c35b085d517a302cf8952ae7d287c427911bfd
+  languageName: node
+  linkType: hard
+
 "@colors/colors@npm:1.5.0":
   version: 1.5.0
   resolution: "@colors/colors@npm:1.5.0"
@@ -2917,6 +2927,7 @@ __metadata:
     "@apollo/client": ^3.8.4
     "@apollo/server": ^4.9.3
     "@casl/ability": ^6.5.0
+    "@casl/vue": ^2.2.1
     "@nestjs/apollo": ^12.0.9
     "@nestjs/common": ^10.0.2
     "@nestjs/core": ^10.0.2

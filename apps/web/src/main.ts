@@ -4,6 +4,8 @@ import App from './App.vue';
 import { router } from './router';
 import { createPinia } from 'pinia';
 import { apolloClient } from './apollo-client';
+import { abilitiesPlugin } from '@casl/vue';
+import appAbility from './app-ability';
 
 const app = createApp({
   setup() {
@@ -15,5 +17,8 @@ const app = createApp({
 
 app.use(createPinia());
 app.use(router);
+app.use(abilitiesPlugin, appAbility, {
+  useGlobalProperties: true,
+});
 
 app.mount('#app');

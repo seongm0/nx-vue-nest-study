@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="can('read', 'Post')">
     <h1>Posts</h1>
     <button v-if="canPostCreate" @click="create">create</button>
     <div v-if="postsLoading">Loading!!!!</div>
@@ -26,9 +26,20 @@ import { useRouter } from 'vue-router';
 import { usePostsQuery } from '../hooks/query/usePostsQuery';
 import { useAuthStore } from '../stores/auth';
 import { computed } from 'vue';
+import { useAbility } from '@casl/vue';
+import { watch } from 'vue';
 
 const router = useRouter();
 const authStore = useAuthStore();
+const { can } = useAbility();
+
+watch(can, () => {
+  console.log('can changed');
+});
+
+console.log('read: ', can('read', 'Post'));
+console.log('update: ', can('update', 'Post'));
+console.log('delete: ', can('delete', 'Post'));
 
 const { posts, loading: postsLoading, error: postsError } = usePostsQuery();
 const canPostUpdate = computed(
